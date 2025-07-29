@@ -43,27 +43,29 @@
 ## **4. Example**
 
 ### **WebSockets (Native)**
-```javascript
-const socket = new WebSocket('ws://localhost:3000');
+```typescript
+const socket: WebSocket = new WebSocket('ws://localhost:3000');
 
 socket.onopen = () => {
   socket.send('Hello WebSocket!');
 };
 
-socket.onmessage = (event) => {
+socket.onmessage = (event: MessageEvent) => {
   console.log('Message from server:', event.data);
 };
 ```
 
 ### **Socket.IO**
-```javascript
-const socket = io('http://localhost:3000');
+```typescript
+import { io, Socket } from "socket.io-client";
+
+const socket: Socket = io('http://localhost:3000');
 
 socket.on('connect', () => {
   socket.emit('message', 'Hello Socket.IO!');
 });
 
-socket.on('message', (msg) => {
+socket.on('message', (msg: string) => {
   console.log('Message from server:', msg);
 });
 ```
